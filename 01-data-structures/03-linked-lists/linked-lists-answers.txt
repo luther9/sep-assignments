@@ -1,0 +1,13 @@
+1. Spatial locality is when things are close together in RAM. CPUs tend to cache
+sections of RAM when they do a lookup, so when you access multiple elements of
+an array, the CPU may only have to do one lookup.
+
+2. ```
+       user     system      total        real
+Make Array  0.000000   0.000000   0.000000 (  0.000071)
+Make LinkedList  0.010000   0.000000   0.010000 (  0.005623)
+Get array[5000]  0.000000   0.000000   0.000000 (  0.000004)
+Get 5000th node  0.000000   0.000000   0.000000 (  0.000329)
+Delete array[5000]  0.000000   0.000000   0.000000 (  0.000012)
+Delete 5000th node  0.000000   0.000000   0.000000 (  0.000993)
+```
