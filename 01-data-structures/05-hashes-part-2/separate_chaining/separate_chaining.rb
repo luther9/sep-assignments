@@ -1,41 +1,40 @@
-require_relative 'linked_list'
+require_relative 'node'
 
 class SeparateChaining
-  attr_reader :max_load_factor
+  MAX_LOAD_FACTOR = 0.7
 
   def initialize(size)
     @items = Array.new(size)
     @item_count = 0
-    @max_load_factor = 0.7
   end
 
   def []=(key, value)
     i = index(key, @items.size)
-    n = Node.new(key, value)
+    n = @items[i]
+    while n && n.key != key
+      n = n.next
+    end
+    if n
+      n.value = value
+    else
+      n = Node.new(key, value, @items[i])
+      @items[i] = n
+      @item_count += 1
 
-    # COLLISION!
-    @items[i] != nil ? list = @items[i] : list = LinkedList.new
-
-    list.add_to_tail(n)
-    @items[i] = list
-    @item_count = @item_count + 1
-
-    # Resize the hash if the load factor grows too large
-    if load_factor.to_f > max_load_factor.to_f
-      resize
+      # Resize the hash if the load factor grows too large
+      if load_factor > MAX_LOAD_FACTOR
+        resize
+      end
     end
   end
 
   def [](key)
     list = @items.at(index(key, @items.size))
-    if list != nil
-      curr = list.head
-      while curr != nil
-        if curr.key == key
-          return curr.value
-        end
-        curr = curr.next
+    while list
+      if list.key == key
+        return list.value
       end
+      list = list.next
     end
   end
 
@@ -70,18 +69,11 @@ class SeparateChaining
   def resize
     new_size = size*2
     new_items = Array.new(new_size)
-    (0..@items.size-1).each do |i|
-      list = @items[i]
-      if list != nil
-        curr = list.head
-        # We only need to compute the new index once
-        new_index = index(curr.key, new_items.size)
-        while curr != nil
-          list = LinkedList.new
-          list.add_to_tail(curr)
-          new_items[new_index] = list
-          curr = curr.next
-        end
+    @items.each do |bucket|
+      while bucket
+        i = index(bucket.key, new_size)
+        new_items[i] = Node.from_node(bucket, new_items[i])
+        bucket = bucket.next
       end
     end
 
