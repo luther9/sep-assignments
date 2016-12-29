@@ -7,10 +7,7 @@ class OpenAddressing
   end
 
   def []=(key, value)
-    i = index(key)
-    while @items[i] && @items[i].key != key
-      i = (i + 1) % size
-    end
+    i = next_matching_or_nil(key)
     if @items[i]
       @items[i].value = value
     else
@@ -23,10 +20,7 @@ class OpenAddressing
   end
 
   def [](key)
-    i = index(key)
-    while @items[i] && @items[i].key != key
-      i = (i + 1) % size
-    end
+    i = next_matching_or_nil(key)
     if @items[i]
       @items[i].value
     end
@@ -70,4 +64,14 @@ class OpenAddressing
   private
 
   MAX_LOAD_FACTOR = 0.7
+
+  # Calculates an index from key and returns the next index that either contains
+  # that key or is nil.
+  def next_matching_or_nil key
+    i = index(key)
+    while @items[i] && @items[i].key != key
+      i = (i + 1) % size
+    end
+    i
+  end
 end
