@@ -16,4 +16,8 @@ class Node
   def self.from_node node, next_
     new(node.key, node.value, next_)
   end
+
+  def to_s
+    "#@key: #@value => #@next"
+  end
 end

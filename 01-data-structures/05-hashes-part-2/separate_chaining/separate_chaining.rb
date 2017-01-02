@@ -79,4 +79,14 @@ class SeparateChaining
 
     @items = new_items
   end
+
+  def to_s
+    str = "SeparateChaining: load factor: #{load_factor}\n"
+    @items.each_index { |i|
+      if @items[i]
+        str += "[#{i}] #{@items[i]}\n"
+      end
+    }
+    str
+  end
 end

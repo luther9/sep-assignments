@@ -1,4 +1,4 @@
-require_relative 'node'
+require_relative 'hash_node'
 
 class OpenAddressing
   def initialize(size)
@@ -11,9 +11,9 @@ class OpenAddressing
     if @items[i]
       @items[i].value = value
     else
-      @items[i] = Node.new(key, value)
+      @items[i] = HashNode.new(key, value)
       @item_count += 1
-      if @item_count.to_f / size > MAX_LOAD_FACTOR
+      if load_factor > MAX_LOAD_FACTOR
         resize
       end
     end
@@ -61,6 +61,16 @@ class OpenAddressing
     }
   end
 
+  def to_s
+    str = "SeparateChaining: load factor: #{load_factor}\n"
+    @items.each_index { |i|
+      if @items[i]
+        str += "[#{i}] #{@items[i]}\n"
+      end
+    }
+    str
+  end
+
   private
 
   MAX_LOAD_FACTOR = 0.7
@@ -73,5 +83,9 @@ class OpenAddressing
       i = (i + 1) % size
     end
     i
+  end
+
+  def load_factor
+    @item_count.to_f / size
   end
 end
