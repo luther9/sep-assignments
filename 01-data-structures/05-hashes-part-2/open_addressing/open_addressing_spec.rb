@@ -54,15 +54,6 @@ RSpec.describe OpenAddressing, type: Class do
     end
   end
 
-  describe "#next_open_index" do
-    it "returns -1 if there are no open indices" do
-      inception = OpenAddressing.new(1)
-      inception["The Original"] = "The Best Movie Ever"
-      expect(inception.next_open_index(0)).to eq -1
-    end
-
-  end
-
   describe "#resize" do
     it "doubles the size of the array when invoked" do
       movies = OpenAddressing.new(6)
