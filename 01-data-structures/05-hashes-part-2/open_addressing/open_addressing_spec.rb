@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'node'
+require_relative 'hash_node'
 require_relative 'open_addressing'
 
 RSpec.describe OpenAddressing, type: Class do
@@ -38,11 +38,9 @@ RSpec.describe OpenAddressing, type: Class do
       expect(hash.size).to eq 4
     end
 
-    it "resizes the array when a collision occurs and hash is full" do
+    it "resizes the array when the load factor exceeds 0.7" do
       hash = OpenAddressing.new(1)
       hash["key"] = "value"
-      expect(hash.size).to eq 1
-      hash["key"] = "second value"
       expect(hash.size).to eq 2
     end
 
@@ -54,15 +52,6 @@ RSpec.describe OpenAddressing, type: Class do
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
     end
-  end
-
-  describe "#next_open_index" do
-    it "returns -1 if there are no open indices" do
-      inception = OpenAddressing.new(1)
-      inception["The Original"] = "The Best Movie Ever"
-      expect(inception.next_open_index(0)).to eq -1
-    end
-
   end
 
   describe "#resize" do
