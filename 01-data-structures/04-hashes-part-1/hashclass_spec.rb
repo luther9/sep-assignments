@@ -49,11 +49,15 @@ RSpec.describe HashClass, type: Class do
       expect(hash.size).to eq 1
     end
 
-    it "resizes the array when a collision occurs and the values do not match" do
+    it "resizes the array when a collision occurs and the keys do not match" do
       hash = HashClass.new(1)
-      hash["key"] = "value"
+      keys = ['key', 'key1']
+      if hash.index(keys[0], 2) == hash.index(keys[1], 2)
+        raise "Bad test: Need keys that don't collide"
+      end
+      hash[keys[0]] = "value"
       expect(hash.size).to eq 1
-      hash["key"] = "different"
+      hash[keys[1]] = "different"
       expect(hash.size).to eq 2
     end
 
