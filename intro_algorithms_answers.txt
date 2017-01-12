@@ -1,0 +1,31 @@
+**Using proper pseudo-code, describe three or more primitive algorithms used in
+  your day-to-day life.**
+
+**Calculating a tip**
+
+SET subtotal to sum of item prices
+SET percentage to tax + tip_percentage
+RETURN subtotal * (1 + percentage)
+
+**Getting to work**
+
+IF raining
+  get in car
+ELSE
+  get on bike
+ENDIF
+WHILE not at work
+  go to next intersection
+  go whichever way is closest to work
+ENDWHILE
+
+**Replacing batteries**
+
+IF device not working
+  turn off device
+  open battery compartment
+  take out batteries
+  put in new batteries
+  replace battery cover
+  turn on device
+ENDIF
