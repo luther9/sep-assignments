@@ -23,3 +23,19 @@
 10. 55
 11. 89
 12. 144
+
+**Given an unsorted collection of a million items, which algorithm would you
+  choose between linear search and binary search? Would you use an iterative or
+  recursive solution?**
+
+I'd use linear search, because binary search would break on an unsorted array.
+I'd use an iterative solution, because recursion would require either an extra
+parameter or a helper function.
+
+**Given a sorted collection of a million items, which algorithm would you choose
+  between linear search and binary search? Would you use an iterative or
+  recursive solution? Explain your reasoning.**
+
+I'd use a binary search, because it's much faster. I'd use an iterative
+solution, because recursion would require either extra parameters or a helper
+function.
