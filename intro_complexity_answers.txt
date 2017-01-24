@@ -1,0 +1,52 @@
+**Describe an analogy for relating an algorithm that has efficiency O(1) and
+  another algorithm that has O(2n).**
+
+An algorithm that has O(1) is an F-18 jet and an algorithm that has O(2^n) is a
+small pony.
+
+**In plain English, what is the best case scenario for binary search?**
+
+Constant time.
+
+**In plain English, what is the worst-case scenario for binary search?**
+
+Logarithmic time.
+
+**In plain English, what is the bounded-case scenario for binary search?**
+
+Logarithmic time.
+
+**What's the asymptotic limit as n approaches infinity for the function defined
+  by the values above?**
+
+Infinity.
+
+**What is the Big-O of an algorithm that has the data points above?**
+
+O(2^n)
+
+**Write a Ruby script that calculates and prints the input size to iterations
+  for the worst-case similar to the graph above for linear search.**
+
+```ruby
+11.times { |i|
+  puts("#{i},#{i}")
+}
+```
+
+**Create a graph from the output using Google Sheets or other graphing software.
+  Analyze the graph and denote its Big-O somewhere on the graph.**
+
+O(n)
+
+**What is the Big-O of binary search?**
+
+O(log n)
+
+**What is the Big-Ω of binary search?**
+
+O(1)
+
+**What is the Big-Ө of binary search?**
+
+O(log n)
