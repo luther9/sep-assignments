@@ -1,0 +1,14 @@
+1. O(1). It doesn't do anything multiple times.
+
+2. O(n). It has to visit each element once.
+
+3. O(n). *n* is the total number of items in the 2-dimensional array. The
+program must vist each item once.
+
+4. O(2^n). It makes 2 recursive calls for every step.
+
+5. O(n). By keeping track of the loop state, it only has to iterate *n* times.
+
+6. O(n^2). If the pivot turns out to be the biggest or smallest item, then only
+one recursive call does any work, and it has to iterate through the entire
+unsorted array.
