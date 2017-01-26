@@ -2,8 +2,9 @@
 
 2. O(n). It has to visit each element once.
 
-3. O(n). *n* is the total number of items in the 2-dimensional array. The
-program must vist each item once.
+3. O(n). If the inner arrays are all different sizes, *n* is the total number of
+items in the 2-dimensional array. The program must vist each item once. If the
+inner arrays are all the same known size, we have O(n*m).
 
 4. O(2^n). It makes 2 recursive calls for every step.
 
@@ -11,4 +12,4 @@ program must vist each item once.
 
 6. O(n^2). If the pivot turns out to be the biggest or smallest item, then only
 one recursive call does any work, and it has to iterate through the entire
-unsorted array.
+unsorted array. With reasonable precautions, we usually get O(n log n).
