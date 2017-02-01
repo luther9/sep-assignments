@@ -1,0 +1,6 @@
+1. n is the number of arrays, and m is the length of the longest array. Visiting
+each item is O(n*m). For each item, we insert it into `sorted_array` by
+iterating through it, and it may already have n*m elements. O(n^2*m^2).
+
+2. Like version 1, but when we insert to `sorted_array`, we use binary search.
+O(n*m*log(n*m)).
